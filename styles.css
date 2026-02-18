@@ -1,0 +1,252 @@
+:root {
+  --ink: #2f2214;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Nunito", system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(circle at 18% 4%, #fff7e8 0%, #efe4d2 38%, #dac9af 100%),
+    linear-gradient(180deg, #f3ead9, #deccb1);
+  display: grid;
+  place-items: center;
+}
+
+.game-shell {
+  width: min(1100px, 100%);
+  padding: 18px 14px 22px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0;
+  font: 600 2rem/1 "Cinzel", Georgia, serif;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  max-width: 62ch;
+}
+
+.badge {
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 800;
+  background: linear-gradient(165deg, #f5e5bf, #d6b067);
+  border: 1px solid #9a6f2c;
+  box-shadow: 0 5px 10px #5336142f;
+}
+
+.board-wrap {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid #9b825d;
+  box-shadow: 0 24px 46px #4f391f22;
+}
+
+.scene {
+  width: 100%;
+  height: min(74vh, 700px);
+  min-height: 500px;
+  background: linear-gradient(180deg, #f7efde 0%, #e8d9c3 62%, #dfcfb3 100%);
+}
+
+.scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hud {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hud p {
+  margin: 0;
+  display: inline-block;
+  background: #f8f1e4cf;
+  border: 1px solid #d4bc93;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #1a12096e;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  z-index: 40;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  width: min(520px, calc(100% - 32px));
+  border-radius: 20px;
+  padding: 26px 22px;
+  text-align: center;
+  background: linear-gradient(180deg, #fbf1df, #e5cfa8);
+  border: 1px solid #94652d;
+  box-shadow: 0 24px 50px #2a1b0f2b;
+  position: relative;
+  z-index: 2;
+  animation: cardIn 240ms ease-out;
+}
+
+.card h2 {
+  margin: 0 0 10px;
+  font: 600 1.8rem/1.1 "Cinzel", Georgia, serif;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.04rem;
+}
+
+.primary-btn {
+  margin-top: 16px;
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(180deg, #2f7b4c, #145530);
+}
+
+.overlay.finale {
+  background:
+    radial-gradient(circle at 50% 22%, #f6e1b1d4, #2b1708cf 68%),
+    #201208ed;
+}
+
+.overlay.finale .card {
+  width: min(780px, calc(100% - 34px));
+  padding: 36px 28px 30px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, #fff1d1, #e2ba7b);
+  border: 2px solid #8f5d20;
+  box-shadow: 0 40px 70px #160c05a8, 0 0 42px #f6c56c47;
+  animation: finaleIn 520ms cubic-bezier(0.2, 0.9, 0.15, 1.05);
+}
+
+.overlay.finale .card h2 {
+  margin-bottom: 14px;
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: 0.02em;
+  color: #532f13;
+}
+
+.overlay.finale .card p {
+  font-size: clamp(1.15rem, 2.4vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #4b2b0f;
+}
+
+.overlay.finale .primary-btn {
+  margin-top: 22px;
+  padding: 13px 30px;
+  font-size: 1.08rem;
+  box-shadow: 0 10px 18px #19331d66;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -14px;
+  width: 12px;
+  height: 18px;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation-name: confettiFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes finaleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.84);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(0, -30px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift), 108vh, 0) rotate(var(--spin));
+    opacity: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  h1 {
+    font-size: 1.62rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .scene {
+    height: 68vh;
+    min-height: 460px;
+  }
+
+  .badge {
+    font-size: 0.9rem;
+  }
+
+  .hud p {
+    font-size: 0.92rem;
+  }
+}

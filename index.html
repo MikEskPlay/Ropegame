@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Sandras replek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Nunito:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="topbar">
+        <div>
+          <h1>Sandras replek</h1>
+          <p class="subtitle">Flytta en repände i taget till den tomma punkten och red ut knuten.</p>
+        </div>
+        <div class="badge" id="levelLabel">Bana 1/6</div>
+      </header>
+
+      <section class="board-wrap">
+        <div id="scene" class="scene" aria-label="3D spelplan"></div>
+      </section>
+
+      <footer class="hud">
+        <p id="crossingsLabel">Korsningar kvar: 0</p>
+        <p id="hintLabel">Tryck på en repände, sedan på den tomma punkten.</p>
+      </footer>
+    </main>
+
+    <div class="overlay hidden" id="overlay" role="dialog" aria-modal="true">
+      <div class="card">
+        <h2 id="overlayTitle">Grattis!</h2>
+        <p id="overlayText">Grattis, du är nu ett steg närmare...</p>
+        <button id="nextBtn" class="primary-btn" type="button">Nästa bana</button>
+      </div>
+    </div>
+
+    <script src="loader.js" defer></script>
+  </body>
+</html>
